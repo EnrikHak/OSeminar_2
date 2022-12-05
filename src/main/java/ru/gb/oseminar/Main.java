@@ -1,22 +1,31 @@
 package ru.gb.oseminar;
-import ru.gb.oseminar.controller.UserController;
 
-//a. Создать класс УчебнаяГруппа содержащая в себе поля Преподаватель и список Студентов.
-//b. Создать класс УчебнаяГруппаСервис, в котором реализована функция(входные параметры - (Teacher, List<Strudent>))
-// формирования из Студентов и Преподавателя УчебнойГруппы и возвращения его
-//c. Создать метод в Контроллере, в котором агрегируются функции получения списка студентов (их id) и преподавателя (его id)
-// и формирования учебной группы, путем вызова метода из сервиса
-//d. Все вышеуказанное создать согласно принципам ООП пройдённым на семинаре
+import ru.gb.oseminar.controller.Controller;
+
+import java.util.logging.Logger;
 
 public class Main {
-
     public static void main(String[] args) {
-        UserController userController = new UserController();
-        userController.createGroup("ExampleFirstNameT",
-                "ExampleSecondNameT",
-                "ExamplePatronymicT");
-        userController.createGroup("ExampleFirstNameT",
-                "ExampleSecondNameT",
-                "ExamplePatronymicT");
+        Controller controller = new Controller();
+
+        controller.createTeacher("Anton", "Antonov", "Antonovich");
+        controller.createStudent("Vladimir", "Konstantinov", "Vladimirovich");
+        controller.createStudent("Konstantin", "Sokolov", "Konstantinovich");
+        controller.createStudent("Evgeniy", "Evgen'ev", "Evgenevich");
+        controller.createStudyGroup();
+
+        controller.createTeacher("Aleksey", "Alekseev", "Alekseevich");
+        controller.createStudent("Yuriy", "Yur'ev", "Yur'evich");
+        controller.createStudent("Maksim", "Maksimov", "Maksimovich");
+        controller.createStudent("Boris", "Borisov", "Borisovich");
+        controller.createStudyGroup();
+
+        controller.createTeacher("Aleksandr", "Aleksandrov", "Aleksandrovich");
+        controller.createStudent("Vladislav", "Vladislavov", "Vladislavovich");
+        controller.createStudent("Petr", "Petrov", "Petrovich");
+        controller.createStudent("Ivan", "Ivanov", "Ivanovich");
+        controller.createStudyGroup();
+
+        controller.showSortedStudents(controller.getAllStudyGroups());
     }
 }
